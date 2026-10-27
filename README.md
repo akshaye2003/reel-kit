@@ -70,4 +70,8 @@ skills/reel-kit/
   assets/fonts/        Inter (SIL Open Font License 1.1, see OFL.txt)
 ```
 
+## License
+
+[MIT](LICENSE): use it, change it and share it freely; just keep the copyright notice. The bundled Inter font is under the SIL Open Font License 1.1.
+
 Fetched at run time rather than bundled, each under its own license: the [HyperFrames](https://www.npmjs.com/package/hyperframes) CLI (via npx), [GSAP](https://gsap.com) (downloaded once from cdnjs and cached in `~/.cache/reel-kit/`) and the Whisper speech model (via [faster-whisper](https://github.com/SYSTRAN/faster-whisper)).

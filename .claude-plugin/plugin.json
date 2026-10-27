@@ -8,5 +8,6 @@
   },
   "homepage": "https://github.com/akshaye2003/reel-kit",
   "repository": "https://github.com/akshaye2003/reel-kit",
+  "license": "MIT",
   "keywords": ["video", "reels", "instagram", "tiktok", "shorts", "captions", "talking-head", "ffmpeg", "hyperframes"]
 }
