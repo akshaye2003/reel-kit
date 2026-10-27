@@ -35,7 +35,7 @@ One `project.json` describes one reel: which takes, what was said, and which gra
   "punch": ["not what you think"],         // phrases whose cut gets the tightest crop
   "end_hold": 2.6,                         // seconds of end card after the last word
   "voice": { "enhance": "off" },           // "off" (default) | "light" | "full" (experimental)
-  "safe": { "top": 250, "bottom": 1595, "right": 885 },   // Instagram no-go zones, 1080x1920 px
+  "safe": { "top": 250, "bottom": 1595, "right": 885, "side": 100 },   // Instagram no-go zones, 1080x1920 px; side = feed crop on tall phones
   "cuts": { "min_gap": 0.28, "max_seg": 3.2, "min_seg": 0.9, "depth_db": 25 },
   "takes": [ ... ],
   "overlays": [ ... ]

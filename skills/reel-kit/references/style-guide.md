@@ -35,8 +35,9 @@ Instagram draws its own interface over a Reel; nothing of ours may sit there. Me
 | Right column | like / comment / share / more / audio buttons | x ≥ 885 (right ~18%), full height |
 | Bottom band | username, caption, audio line | y ≥ 1595 (bottom ~17%) |
 | Top band | "Reels" header + camera icon | y < 250 (top ~13%) |
+| Side strips | cropped off by the feed on tall phones (fills screen height, cuts the sides; ~56 px each side on an iPhone, more on 20:9 Androids) | x < 100 and x > 980 |
 
-That leaves a safe box of **x 0–885, y 250–1595**. The kit keeps a further 20 px buffer and a 54 px left margin, so things are centred on the safe box (x≈460), not the frame (x=540). Many reference reels break this rule: a checklist in the top band, a watermark in the right column. Don't copy that.
+That leaves a safe box of **x 100–885, y 250–1595**. The kit keeps a further 20 px buffer (content at x 120–865), so things are centred on the safe box (x≈490), not the frame (x=540). Editor previews show the full 9:16 frame, so the side crop only shows up once the reel is posted. Many reference reels break this rule: a checklist in the top band, a watermark in the right column. Don't copy that.
 
 ## 4. Graphics layers (bottom to top)
 

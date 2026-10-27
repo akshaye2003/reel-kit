@@ -112,9 +112,10 @@ On 1080×1920, measured from the Edits app's yellow guides:
 
 - right column, x ≥ 885 (like/comment/share/audio buttons), full height;
 - bottom band, y ≥ 1595 (username, caption, audio line);
-- top band, y < 250 (header, camera icon).
+- top band, y < 250 (header, camera icon);
+- both side strips, x < 100 and x > 980. The feed fills a tall phone's screen height, so it **crops the sides of the 9:16 frame**: about 56 px each side on an iPhone, more on 20:9 Androids. Editor previews show the whole frame, so they won't warn you about this.
 
-The composer lays everything out inside the remaining box, with a 20 px buffer from the zones. That's why captions and cards are centred slightly left of the frame centre. That's correct, not a bug. The zones are configurable under `"safe"`, but change them only if Instagram's layout changes.
+The composer lays everything out inside the remaining box (x 120–865, y 270–1575), with a 20 px buffer from the zones. That's why captions and cards are centred slightly left of the frame centre. That's correct, not a bug. The zones are configurable under `"safe"`, but change them only if Instagram's layout changes.
 
 ## 8. Report back
 

@@ -78,8 +78,10 @@ def load_project(path):
     s.setdefault("bottom", 1595)      # bottom ~17%
     s.setdefault("right", 885)        # right ~18%, full height
     s.setdefault("left", 0)
+    # the feed fills a tall phone's screen height and crops the 9:16 frame's sides: ~56 px each side
+    # on an iPhone (measured from a screen recording of a posted reel), more on 20:9+ Androids
+    s.setdefault("side", 100)
     s.setdefault("buffer", 20)        # keep this far from the yellow
-    s.setdefault("margin_left", 54)
     return p
 
 
@@ -772,7 +774,10 @@ def build_card(o, cid, comp, t0, t1):
                 comp.to(f"#{rid}", {"opacity": 0.45}, st + 0.2, 0.3)
     elif kind == "stat":
         vid = f"{cid}-num"
-        body += (f'<div class="stat"><div class="stat-num" id="{vid}">0</div>'
+        final = f"{o.get('prefix', '')}{o['value']:,}{o.get('suffix', '')}" if o.get("format", ",d") == ",d" \
+            else f"{o.get('prefix', '')}{o['value']}{o.get('suffix', '')}"
+        size = min(104, int((comp.SW - 68) / (0.62 * len(final))))     # the counted-up number must fit the card
+        body += (f'<div class="stat"><div class="stat-num" id="{vid}" style="font-size:{size}px">0</div>'
                  f'<div class="stat-label">{esc(o.get("label", ""))}</div></div>')
         if o.get("spark", True):
             body += (f'<svg class="spark" viewBox="0 0 800 120" preserveAspectRatio="none">'
@@ -862,11 +867,12 @@ def cmd_compose(p):
 
     # every position below is derived from the safe box (see load_project)
     sf = p["safe"]
-    X0 = max(sf["left"] + sf["buffer"], sf["margin_left"])
-    X1 = sf["right"] - sf["buffer"]
+    X0 = max(sf["left"], sf["side"]) + sf["buffer"]
+    X1 = min(sf["right"], W - sf["side"]) - sf["buffer"]
     Y0 = sf["top"] + sf["buffer"]
     Y1 = sf["bottom"] - sf["buffer"]
     SW = X1 - X0
+    c.SW = SW
     CAP_Y, CAP_Y_CARD, TITLE_Y = 1268, min(1490, Y1 - 85), 1268
     TALLY_X, TALLY_Y, TALLY_DY = X0, Y0 + 4, 38
     TITLE_X = X0 + 8
@@ -1165,9 +1171,10 @@ def cmd_audit(p, step=0.25):
     subprocess.run([npx, "-y", HF, "snapshot", str(aud), "--at", ",".join(f"{t:g}" for t in times),
                     "--no-end", "-o", str(snaps), "--describe", "false"], check=True, capture_output=True)
     sf = p["safe"]
-    zones = {"right": (sf["right"], 0, W, H), "bottom": (0, sf["bottom"], W, H), "top": (0, 0, W, sf["top"])}
-    if sf["left"] > 0:
-        zones["left"] = (0, 0, sf["left"], H)
+    zones = {"right": (min(sf["right"], W - sf["side"]), 0, W, H), "bottom": (0, sf["bottom"], W, H),
+             "top": (0, 0, W, sf["top"])}
+    if max(sf["left"], sf["side"]) > 0:
+        zones["left"] = (0, 0, max(sf["left"], sf["side"]), H)      # cropped off by the feed on tall phones
     bad, frames = [], sorted(snaps.glob("frame-*.png"))
     for f in frames:
         t = float(re.search(r"at-([\d.]+)s", f.name).group(1))
