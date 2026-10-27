@@ -1,0 +1,14 @@
+{
+  "name": "akshaye-plugins",
+  "description": "Claude Code plugins by akshaye2003",
+  "owner": {
+    "name": "Akshaye"
+  },
+  "plugins": [
+    {
+      "name": "reel-kit",
+      "source": "./",
+      "description": "Turn raw talking-head clips into finished Instagram-safe reels with captions, titles and mock-UI cards"
+    }
+  ]
+}

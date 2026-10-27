@@ -1,0 +1,12 @@
+{
+  "name": "reel-kit",
+  "displayName": "Reel Kit",
+  "description": "Turn raw talking-head clips into finished Instagram-safe reels: jump cuts with punch-in zooms, captions, number titles, mock-UI proof cards, a comment-keyword CTA and an end card.",
+  "author": {
+    "name": "Akshaye",
+    "url": "https://github.com/akshaye2003"
+  },
+  "homepage": "https://github.com/akshaye2003/reel-kit",
+  "repository": "https://github.com/akshaye2003/reel-kit",
+  "keywords": ["video", "reels", "instagram", "tiktok", "shorts", "captions", "talking-head", "ffmpeg", "hyperframes"]
+}

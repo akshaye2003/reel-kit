@@ -1,0 +1,53 @@
+{
+  "name": "first-100-users",
+  "handle": "@yourhandle",
+  "whisper": { "model": "medium.en", "hotwords": "signups" },
+  "framing": { "wide": 1.3, "tight": 1.55, "punch": 1.8, "face_y": 0.34 },
+  "punch": ["most people never reply"],
+  "end_hold": 2.6,
+  "voice": { "enhance": "off" },
+
+  "takes": [
+    { "clip": "clips/take-1.mp4", "in": 0.4,
+      "script": "Here are 3 ways to get your first 100 users, ranked worst to best. Paid ads. You can start today, but you burn money before you know what works. Cold email. It's cheap, but most people never reply." },
+    { "clip": "clips/take-2.mp4", "in": 11.2, "out": 27.5,
+      "script": "Number one, build in public. Post what you're building every day, and the right people find you. One founder I know got 100 signups in a week. Comment \"users\" and I'll send you my posting template." }
+  ],
+
+  "overlays": [
+    { "type": "title", "at": "Paid ads.", "number": "3", "icon": "megaphone", "label": "Paid ads",
+      "tally": "3 Paid ads" },
+
+    { "type": "card", "kind": "ui", "at": "start today", "until": "what works.",
+      "header": { "icon": "chart", "title": "Ad campaign", "subtitle": "Day 1",
+                  "pill": { "text": "Live", "tone": "green", "at": "start today" } },
+      "rows": [
+        { "label": "Ready to launch", "check": true, "at": "start today" },
+        { "label": "Budget used", "value": "80%", "progress": 0.8, "at": "burn money" },
+        { "label": "Knows what works", "cross": true, "at": "what works" }
+      ] },
+
+    { "type": "title", "at": "Cold email.", "number": "2", "icon": "chat", "label": "Cold email",
+      "tally": "2 Cold email" },
+
+    { "type": "card", "kind": "notifs", "at": "cheap", "until": "never reply.",
+      "items": [
+        { "app": "Mail", "title": "Campaign sent", "body": "Your sequence went out", "icon": "chat", "color": "#0a84ff", "at": "cheap" },
+        { "app": "Mail", "title": "No new replies", "body": "Inbox", "icon": "bell", "color": "#8e8e93", "at": "never reply" }
+      ] },
+
+    { "type": "title", "at": "build in public.", "number": "1", "icon": "people", "label": "Build in public",
+      "tally": "1 Build in public" },
+
+    { "type": "card", "kind": "grid", "at": "every day", "until": "find you.",
+      "header": { "icon": "play", "title": "Posts this month", "subtitle": "One a day" },
+      "value": 30, "label": "posts" },
+
+    { "type": "card", "kind": "stat", "at": "100 signups", "until": "in a week.",
+      "header": { "icon": "chart", "title": "Signups", "subtitle": "First week",
+                  "pill": { "text": "Organic", "tone": "green" } },
+      "value": 100, "label": "new users" },
+
+    { "type": "cta", "at": "Comment \"users\"", "keyword": "users" }
+  ]
+}
